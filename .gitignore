@@ -1,0 +1,49 @@
+# === MADE - Minimal .gitignore ===
+
+# Sensitive data (NEVER commit)
+*.wav
+*.mp3
+*.flac
+*.TextGrid
+*.textgrid
+*.csv
+*.xlsx
+
+# Default output files
+MADE_acoustic_results.csv
+results_*.csv
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.so
+*.pyd
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.bak
+*~
+
+# Large models (download on demand)
+models/*.bin
+models/*.pt
+*.ckpt
+
+# Environment
+.env
+.env.local
