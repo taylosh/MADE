@@ -3,8 +3,27 @@ message: "If you use this software, please cite it as follows."
 authors:
   - family-names: Taylor
     given-names: S. P.
+    affiliation: "Indiana University"
+    email: "taylosh@iu.edu"
 title: "MADE: Modular Acoustic Data Extractor"
 version: 3.0.0
 date-released: 2026-05-28
+doi: "10.5281/zenodo.20651152"
 license: MIT
 type: software
+repository-code: "https://github.com/taylosh/MADE"
+abstract: "MADE is a modular acoustic feature extraction toolkit for phonetic research."
+keywords:
+  - "acoustic-phonetics"
+  - "feature-extraction"
+  - "praat"
+  - "speech-analysis"
+  - "voice-quality"
+  - "formants"
+  - "mfcc"
+  - "phonetics"
+  - "research-tool"
+  - "python"
+  - "textgrid"
+  - "local-processing"
+  - "reproducible-research"

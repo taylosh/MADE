@@ -144,14 +144,17 @@ For enhanced security when using MADE with sensitive data:
 - Consider differential privacy techniques for shared feature tables
 - Anonymize TextGrid transcriptions by removing participant names before processing
 
-8. Vulnerability Reporting
+8. Vulnerability Reporting & Citation
 --------------------------------------------------------------------------------
 If you discover a security vulnerability in MADE that could lead to data 
 exposure, please report it responsibly by:
 
-1. Emailing the maintainer directly (address in CITATION file)
+1. Emailing the maintainer directly at taylosh@iu.edu
 2. Not disclosing the vulnerability publicly until a patch is available
 3. Providing sufficient detail to reproduce and address the issue
+
+For citation information, see the CITATION.cff file in the repository root
+or the Zenodo archive at https://doi.org/10.5281/zenodo.20651152
 
 MADE is provided "as is" without warranty. Users are responsible for 
 validating that the tool meets their security requirements.
@@ -159,4 +162,5 @@ validating that the tool meets their security requirements.
 ================================================================================
 Last Updated: 28 May 2026
 Version: 3.0.0
+Zenodo DOI: 10.5281/zenodo.20651152
 ================================================================================

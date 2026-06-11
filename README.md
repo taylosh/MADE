@@ -1,3 +1,7 @@
+README.md (Full Contents)
+markdown
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20651152.svg)](https://doi.org/10.5281/zenodo.20651152)
+
 MADE: Modular Acoustic Data Extractor (v3.0.0)
 ================================================================================
 Comprehensive User Guide & Documentation
@@ -64,32 +68,26 @@ Prerequisites:
 
 Create and activate a dedicated environment:
 
-```
-bash
 conda create -n made python=3.10
 conda activate made
 Install core dependencies:
 
-bash
 pip install parselmouth praatio pandas numpy
 Optional (for beautiful progress bars):
 
-bash
 pip install rich
 Verification: Run the MADE controller to confirm all modules load correctly.
 
-bash
 python MADE_v3.py
 The script will automatically create the ./libs/ directory structure on first run.
-```
 
-
+================================================================================
 Quick Start Guide
-
+--------------------------------------------------------------------------------
 For users wanting immediate extraction with sensible defaults:
 
-Organize your files:
-
+1. Organize your files:
+--------------------------------------------------------------------------------
 text
 ./corpus/
 ├── speaker1/
@@ -99,11 +97,12 @@ text
 └── speaker2/
     └── ...
 
-Run MADE:
-
+2. Run MADE:
+--------------------------------------------------------------------------------
 python MADE_v3.py
-Follow the interactive prompts:
 
+3. Follow the interactive prompts:
+--------------------------------------------------------------------------------
 Enter corpus directory (or press Enter for current directory)
 
 Select tiers by name, partial match, or number
@@ -116,14 +115,16 @@ Choose specific features within each category
 
 Specify output CSV filename
 
-Review configuration summary and confirm extraction.
+Review configuration summary and confirm extraction
 
-Monitor progress via Rich progress bar (if installed) or simple text output.
+4. Monitor progress via Rich progress bar (if installed) or simple text output.
+--------------------------------------------------------------------------------
+5. Locate results in your specified CSV file.
+--------------------------------------------------------------------------------
 
-Locate results in your specified CSV file.
-
+================================================================================
 Core Modules (./libs/)
-
+--------------------------------------------------------------------------------
 MADE uses a modular architecture where each acoustic domain has a dedicated
 extractor library. These modules can be used independently or called by the
 master controller.
@@ -141,10 +142,12 @@ Extensibility: To add a new feature, implement the extraction function in its
 domain module and register it in the ExtractionEngine._get_feature_function()
 dictionary.
 
+
+================================================================================
 User Workflow (Step-by-Step)
-
+--------------------------------------------------------------------------------
 Step 1: Directory & File Discovery
-
+--------------------------------------------------------------------------------
 MADE recursively scans the specified directory for all .wav and .TextGrid files,
 pairing them by base name (filename without extension).
 
@@ -155,7 +158,7 @@ Lists first few files for verification
 Assumes TextGrid structure is consistent across all files
 
 Step 2: Tier Selection
-
+--------------------------------------------------------------------------------
 Users can identify tiers using five methods:
 
 Exact name match (e.g., "phones", "words")
@@ -172,7 +175,7 @@ Multiple tiers can be selected (e.g., process both "phones" and "words" tiers
 in the same run). Each tier gets its own filter and feature configuration.
 
 Step 3: Interval Filtering
-
+--------------------------------------------------------------------------------
 For each selected tier, users specify which intervals to extract:
 
 Filter	Description
@@ -185,7 +188,7 @@ Filter	Description
 Filters 3-5 support multiple values (add until user stops).
 
 Step 4: Feature Selection
-
+--------------------------------------------------------------------------------
 MADE organizes features into 26 categories, displayed in two columns:
 
 Vowel-specific (1-7):
@@ -205,33 +208,52 @@ Voice Quality (HNR, jitter, shimmer, CPPS, etc.)
 Nasalization (A1-P0, A1-P1, F1-FP0, spectral peaks)
 
 Fricative/Sibilant (8-11):
-8. Spectral Moments (centroid, spread, skewness, kurtosis)
-9. Band Energy (0-500Hz to 4k-8kHz)
-10. LTAS Measures (A1, P0, P1, FP0, FP1)
-11. Sibilant Resegmentation
+
+Spectral Moments (centroid, spread, skewness, kurtosis)
+
+Band Energy (0-500Hz to 4k-8kHz)
+
+LTAS Measures (A1, P0, P1, FP0, FP1)
+
+Sibilant Resegmentation
 
 Stop/Plosive (12-14):
-12. Voice Onset Time (VOT)
-13. Closure & Release Duration
-14. Release Burst Spectrum
+
+Voice Onset Time (VOT)
+
+Closure & Release Duration
+
+Release Burst Spectrum
 
 Universal (15-20):
-15. Nasal Spectral Measures
-16. Intensity (dB statistics & contours)
-17. Duration (phone, preceding, following)
-18. Zero-Crossing Rate
-19. MFCC (coefficients 1-12, contour)
-20. MFCC Deltas & Delta-Deltas
+
+Nasal Spectral Measures
+
+Intensity (dB statistics & contours)
+
+Duration (phone, preceding, following)
+
+Zero-Crossing Rate
+
+MFCC (coefficients 1-12, contour)
+
+MFCC Deltas & Delta-Deltas
 
 Suprasegmental (21-23):
-21. Word-Level Duration
-22. PVI (Pairwise Variability Index)
-23. Syllable Structure (count, stress, onset/coda type)
+
+Word-Level Duration
+
+PVI (Pairwise Variability Index)
+
+Syllable Structure (count, stress, onset/coda type)
 
 Contextual (24-26):
-24. Phonetic Context (preceding/following phones, stress)
-25. Lexical Context (preceding/following words, window)
-26. Syllable Context (preceding/following syllables, stress)
+
+Phonetic Context (preceding/following phones, stress)
+
+Lexical Context (preceding/following words, window)
+
+Syllable Context (preceding/following syllables, stress)
 
 Selection workflow:
 
@@ -242,15 +264,17 @@ For each category, select specific features or "0" for all
 For contour features, specify step percentage (default 10% = 11 points)
 
 Step 5: Output Configuration
-
+--------------------------------------------------------------------------------
 Users specify the output CSV filename (default: MADE_acoustic_results.csv).
 
 Output columns are automatically ordered:
-1-10: Fixed metadata columns
-11+: Dynamic feature columns (in FEATURE_MAP order, 1-26)
+
+Columns 1-10: Fixed metadata columns
+
+Columns 11+: Dynamic feature columns (in FEATURE_MAP order, 1-26)
 
 Step 6: Extraction & Progress Monitoring
-
+--------------------------------------------------------------------------------
 After confirmation, MADE begins extraction with real-time progress display:
 
 Rich progress bar (if installed) shows:
@@ -271,8 +295,10 @@ Interval count every 100 rows
 
 Extraction proceeds row by row: each row = one interval × one tier × one file.
 
-Feature Categories Reference
 
+================================================================================
+Feature Categories Reference
+--------------------------------------------------------------------------------
 Complete list of available features with descriptions:
 
 PITCH (Category 1)
@@ -497,8 +523,10 @@ PrecedingSyllable, FollowingSyllable: Adjacent syllable labels
 
 CurrentSyllableStress: Stress level of current syllable
 
-Output CSV Structure
 
+================================================================================
+Output CSV Structure
+--------------------------------------------------------------------------------
 Each row represents ONE interval from ONE tier from ONE file.
 
 Fixed Columns (always present, columns 1-10):
@@ -518,27 +546,23 @@ Dynamic Columns (position varies based on selections):
 
 Single-value features: appear as single columns (e.g., "PitchMean")
 
-Contour features: appear as multiple columns (e.g., "PitchContour_onset",
-"PitchContour_10pct", ..., "PitchContour_offset")
+Contour features: appear as multiple columns (e.g., "PitchContour_onset", "PitchContour_10pct", ..., "PitchContour_offset")
 
-Column ordering: Fixed columns first, then dynamic columns in FEATURE_MAP
-order (categories 1-26). Within each category, features appear in the order
-defined in FEATURE_MAP.
+Column ordering: Fixed columns first, then dynamic columns in FEATURE_MAP order (categories 1-26). Within each category, features appear in the order defined in FEATURE_MAP.
 
-Missing data: Features that cannot be extracted (e.g., pitch on unvoiced
-intervals, formants on stops) remain as empty/NaN cells. This preserves
-the rectangular CSV structure without requiring placeholder values.
+Missing data: Features that cannot be extracted (e.g., pitch on unvoiced intervals, formants on stops) remain as empty/NaN cells. This preserves the rectangular CSV structure without requiring placeholder values.
 
 Example row (abbreviated):
-file_name, tier_name, interval_label, interval_type, preceding_label,
-following_label, has_voicing, start_time, end_time, duration, PitchMean,
-PitchContour_onset, PitchContour_50pct, F1Mean, ...
 
-speaker1.wav, phones, AA, phone, None, B, True, 1.234, 1.456, 0.222,
-125.4, 120.2, 126.1, 720.5, ...
+text
+file_name, tier_name, interval_label, interval_type, preceding_label, following_label, has_voicing, start_time, end_time, duration, PitchMean, PitchContour_onset, PitchContour_50pct, F1Mean, ...
 
+speaker1.wav, phones, AA, phone, None, B, True, 1.234, 1.456, 0.222, 125.4, 120.2, 126.1, 720.5, ...
+
+
+================================================================================
 Extending MADE (Custom Extractors)
-
+--------------------------------------------------------------------------------
 Researchers can add new acoustic measures by following this protocol:
 
 Choose or create the appropriate domain module in ./libs/:
@@ -583,11 +607,13 @@ python
 }
 Test with sample files to validate output.
 
-The modular architecture ensures that new features integrate seamlessly with
-the existing selection, filtering, and CSV output systems.
+The modular architecture ensures that new features integrate seamlessly with the existing selection, filtering, and CSV output systems.
 
+
+
+================================================================================
 Hardware Considerations
-
+--------------------------------------------------------------------------------
 MADE is CPU-bound and does not require GPU acceleration for typical usage.
 
 Minimum Requirements:
@@ -620,20 +646,19 @@ Process smaller batches of files by organizing into subdirectories
 
 For extremely large corpora (>1000 files), consider splitting across machines
 
-C-Modules: Unlike RePAST, MADE does not currently include C-accelerated
-modules, as Praat operations via parselmouth are already optimized. Future
-releases may include compiled extensions for spectral analysis.
+C-Modules: Unlike RePAST, MADE does not currently include C-accelerated modules, as Praat operations via parselmouth are already optimized. Future releases may include compiled extensions for spectral analysis.
 
-Automatic Fallback: MADE degrades gracefully; if a specific feature extraction
-fails (e.g., formants on unvoiced segment), the corresponding cell remains empty
-and extraction continues. No single feature failure halts the entire process.
+Automatic Fallback: MADE degrades gracefully; if a specific feature extraction fails (e.g., formants on unvoiced segment), the corresponding cell remains empty and extraction continues. No single feature failure halts the entire process.
 
+
+================================================================================
 Citing this Work
 
 If you use MADE in your research, please cite it as follows:
 
-Taylor, S. P. (2026). MADE: Modular Acoustic Data Extractor (Version 3.0.0)
-[Computer software]. https://github.com/taylosh/MADE
+Zenodo DOI: 10.5281/zenodo.20651152
+
+Taylor, S. P. (2026). MADE: Modular Acoustic Data Extractor (Version 3.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.20651152
 
 BibTeX entry:
 
@@ -643,11 +668,13 @@ bibtex
   title = {MADE: Modular Acoustic Data Extractor},
   version = {3.0.0},
   year = {2026},
+  month = {5},
+  doi = {10.5281/zenodo.20651152},
   url = {https://github.com/taylosh/MADE}
 }
 Reproducibility Note: When publishing research using MADE, include:
 
-The version number of MADE used
+The version number of MADE used (3.0.0)
 
 A list of selected feature categories and specific features
 
@@ -657,48 +684,46 @@ The interval filtering criteria applied
 
 A sample of your output CSV (first 10 rows and column headers)
 
-This information ensures that other researchers can precisely replicate
-your acoustic feature extraction methodology.
+This information ensures that other researchers can precisely replicate your acoustic feature extraction methodology.
 
+
+================================================================================
 Acknowledgements & Third-Party Citations
 
-While the orchestration logic, interactive CLI framework, and modular
-extractor architecture in this repository are original works, MADE functions
-as a Python-based orchestration hub for the following foundational technologies:
+While the orchestration logic, interactive CLI framework, and modular extractor architecture in this repository are original works, MADE functions as a Python-based orchestration hub for the following foundational technologies:
 
-Acoustic Analysis: Powered by Praat via the parselmouth Python bindings
-(Boersma & Weenink, 2024) for all signal processing and feature extraction.
+Acoustic Analysis: Powered by Praat via the parselmouth Python bindings (Boersma & Weenink, 2024) for all signal processing and feature extraction.
 
-Audio/TextGrid I/O: Uses praatio (Gorman, 2024) for robust TextGrid parsing
-and manipulation across formats.
+Audio/TextGrid I/O: Uses praatio (Gorman, 2024) for robust TextGrid parsing and manipulation across formats.
 
-Data Handling: Employs pandas (McKinney, 2010) for structured CSV output
-and NumPy (Harris et al., 2020) for numerical operations.
+Data Handling: Employs pandas (McKinney, 2010) and NumPy (Harris et al., 2020) for structured CSV output and numerical operations.
 
-Progress Display: Optional integration with Rich (Will McGugan, 2025) for
-beautiful terminal progress bars and enhanced user experience.
+Progress Display: Optional integration with Rich (Will McGugan, 2025) for beautiful terminal progress bars and enhanced user experience.
 
-For academic transparency and reproducibility, exact dependency versions are
-documented in the requirements.txt file included with this release.
+For academic transparency and reproducibility, exact dependency versions are documented in the requirements.txt file included with this release.
 
-MADE stands on the shoulders of these excellent tools, and users are encouraged
-to cite them alongside MADE in their research publications.
+MADE stands on the shoulders of these excellent tools, and users are encouraged to cite them alongside MADE in their research publications.
 
+
+================================================================================
 Privacy & Security Notice
 
-MADE processes all audio and TextGrid data strictly locally on the researcher's
-machine. No audio data, TextGrid content, or extracted features are ever
-transmitted to external servers. There is no telemetry, usage tracking, or
-automatic update checking.
+MADE processes all audio and TextGrid data strictly locally on the researcher's machine. No audio data, TextGrid content, or extracted features are ever transmitted to external servers. There is no telemetry, usage tracking, or automatic update checking.
 
-The only external connectivity occurs when users manually install dependencies
-via pip or conda. Once installed, MADE operates entirely offline.
+The only external connectivity occurs when users manually install dependencies via pip or conda. Once installed, MADE operates entirely offline.
 
-This local-first architecture protects sensitive participant data and maintains
-compliance with IRB, GDPR, and HIPAA protocols regarding the handling of
-biometric voice data and personally identifiable information (PII) that may
-be present in transcriptions.
+This local-first architecture protects sensitive participant data and maintains compliance with IRB, GDPR, and HIPAA protocols regarding the handling of biometric voice data and personally identifiable information (PII) that may be present in transcriptions.
 
-Researchers should treat their TextGrid files and extracted CSV outputs as
-sensitive data and apply appropriate access controls and encryption for
-storage and transmission.
+Researchers should treat their TextGrid files and extracted CSV outputs as sensitive data and apply appropriate access controls and encryption for storage and transmission.
+
+For complete privacy and security documentation, see Data_Privacy_Statement.md.
+
+
+================================================================================
+Version: 3.0.0 | Last Updated: 28 May 2026 | Zenodo DOI: 10.5281/zenodo.20651152
+
+
+
+
+
+
