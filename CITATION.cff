@@ -1,38 +1,36 @@
 cff-version: 1.2.0
-message: "If you use this software in your research, please cite it as follows."
+message: "If you use this software, please cite it as follows."
 authors:
   - family-names: Taylor
     given-names: S. P.
-    orcid: "https://orcid.org/0000-0000-0000-0000"
+    affiliation: Indiana University
+    email: taylosh@iu.edu
 title: "MADE: Modular Acoustic Data Extractor"
 version: 3.0.0
-date-released: "2026-05-28"
-doi: "https://doi.org/10.5281/zenodo.19140617"
-abstract: >-
-  MADE (Modular Acoustic Data Extractor) is a comprehensive Python toolkit 
-  for automated acoustic feature extraction from labeled speech corpora. 
-  It provides researchers with access to 26 feature categories spanning 
-  pitch, formants, voice quality, MFCC, and contextual measures. The system 
-  features interactive command-line configuration for tier selection, 
-  interval filtering, and feature selection, making it accessible to 
-  researchers without extensive programming experience. MADE processes 
-  standard WAV/TextGrid pairs recursively across directory structures 
-  and outputs structured CSV files suitable for statistical analysis. 
-  The modular architecture allows for easy extension with custom feature 
-  extractors, while the local-first processing ensures data privacy 
-  and reproducibility.
-keywords:
-  - "acoustic phonetics"
-  - "feature extraction"
-  - "speech analysis"
-  - "formant analysis"
-  - "voice quality"
-  - "MFCC"
-  - "spectral analysis"
-  - "phonetic research"
-  - "reproducibility"
-  - "computational linguistics"
+date-released: 2026-05-28
+doi: 10.5281/zenodo.XXXXXXX
 license: MIT
 repository-code: "https://github.com/taylosh/MADE"
-commit: "v3.0.0"
-type: software
+abstract: >-
+  MADE (Modular Acoustic Data Extractor) is a modular, high-performance toolkit
+  designed for phoneticians and speech researchers requiring comprehensive
+  acoustic feature extraction from labeled speech corpora. It features 26
+  feature categories spanning pitch, formants, voice quality, MFCC, and context,
+  with an interactive terminal-based user interface and modular extractor
+  libraries. All processing occurs locally with no external data transmission,
+  ensuring compliance with IRB, GDPR, and HIPAA protocols for sensitive
+  biometric voice data.
+keywords:
+  - acoustic-phonetics
+  - speech-analysis
+  - feature-extraction
+  - praat
+  - voice-quality
+  - formants
+  - mfcc
+  - phonetics
+  - research-tool
+  - python
+  - textgrid
+  - local-processing
+  - reproducible-research
